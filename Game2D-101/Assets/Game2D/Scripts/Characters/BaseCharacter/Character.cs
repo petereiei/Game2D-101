@@ -9,12 +9,14 @@ public abstract class Character : MonoBehaviour
     public CharacterAttribute attribute;
 
     //module
+    public CharacterModel characterModel;
     public CharacterControl characterControl;
+
 
     //event
     public UnityAction<Vector2> onMove;
 
 
     //method
-    public abstract string GetAnimatorId();
+    public abstract string GetCharacterModelId();
 }

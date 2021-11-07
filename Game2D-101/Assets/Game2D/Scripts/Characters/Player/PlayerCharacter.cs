@@ -10,17 +10,19 @@ public class PlayerCharacter : Character
     {
         playerAttribute = gameObject.AddComponent<PlayerAttribute>();
         attribute = playerAttribute;
+        characterModel = gameObject.GetComponentInChildren<CharacterModel>();
         characterControl = gameObject.GetComponent<PlayerControl>();
     }
 
     public void Init()
     {
         playerAttribute.Init(this);
+        characterModel.Init(this);
         characterControl.Init(this);
     }
 
-    public override string GetAnimatorId()
+    public override string GetCharacterModelId()
     {
-        return "Player";
+        return "PSB_Character_Knight";
     }
 }
