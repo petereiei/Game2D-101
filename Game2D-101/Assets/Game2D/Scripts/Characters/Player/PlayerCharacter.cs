@@ -19,10 +19,13 @@ public class PlayerCharacter : Character
         playerAttribute.Init(this);
         characterModel.Init(this);
         characterControl.Init(this);
+
+        onMove += characterModel.OnMove;
+        onAttack += characterModel.OnAttack;
     }
 
     public override string GetCharacterModelId()
     {
-        return "PSB_Character_Knight";
+        return "Unit_Knight_Jarek";
     }
 }

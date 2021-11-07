@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf7c34a0dc4e6348bea04faa70406ee, type: 3}
+  m_Name: gobin_002
+  m_EditorClassIdentifier: 
+  m_Labels:
+  - m_Name: Layer 2 Copy
+    m_Hash: -1506151892
+    m_CategoryList:
+    - m_Name: Layer 2 Copy
+      m_Hash: -1506151892
+      m_Sprite: {fileID: 8280797622335000956, guid: ee315efe5a0ea29469645f3c5c58aa4d,
+        type: 3}
+  - m_Name: Layer 3 Copy
+    m_Hash: 1835344265
+    m_CategoryList:
+    - m_Name: Layer 3 Copy
+      m_Hash: 1835344265
+      m_Sprite: {fileID: 2189281806776043919, guid: ee315efe5a0ea29469645f3c5c58aa4d,
+        type: 3}
