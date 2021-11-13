@@ -25,4 +25,9 @@ public class CharacterControl : MonoBehaviour
         rigidBody2D.MovePosition(rigidBody2D.position + direction * character.attribute.moveSpeed);
         character.onMove?.Invoke(direction);
     }
+
+    public void Attack()
+    {
+        character.onAttack?.Invoke();
+    }
 }

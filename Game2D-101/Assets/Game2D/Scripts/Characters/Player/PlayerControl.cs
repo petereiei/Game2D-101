@@ -15,19 +15,17 @@ public class PlayerControl : CharacterControl
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            character.characterControl.Attack();
+        }
+
         PlayerInput();
     }
 
     public void PlayerInput()
     {
-        if (character == null)
-        {
-            Debug.Log("character == null");
-        }
-        else
-        {
-            character.characterControl.MoveToDirection(GetRawInput().normalized);
-        }
+        character.characterControl.MoveToDirection(GetRawInput().normalized);
     }
 
     private Vector2 GetRawInput()

@@ -14,6 +14,7 @@ public abstract class Character : MonoBehaviour
 
 
     //event
+    public UnityAction onAttack;
     public UnityAction<Vector2> onMove;
 
 
