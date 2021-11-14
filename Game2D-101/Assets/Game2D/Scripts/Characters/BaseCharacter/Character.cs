@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public abstract class Character : MonoBehaviour
 {
+    public CharacterBehaviourControl behaviourControl;
+
     //character data
     public CharacterAttribute attribute;
 
@@ -20,4 +22,10 @@ public abstract class Character : MonoBehaviour
 
     //method
     public abstract string GetCharacterModelId();
+
+
+    protected virtual void Awake()
+    {
+        behaviourControl = GetComponent<CharacterBehaviourControl>();
+    }
 }
