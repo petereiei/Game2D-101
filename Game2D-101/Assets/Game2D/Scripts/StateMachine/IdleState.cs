@@ -14,14 +14,12 @@ public class IdleState : CharacterBaseState
 
     public override void CheckSwitchStates()
     {
-        if (CurrentBehaviourControl.isAttacking)
+        if (CurrentBehaviourControl.IsAttacking)
             SwitchState(StateFactory.Attacking());
     }
 
     public override void EnterState()
     {
-        Debug.Log("EnterState IdleState...");
-
         CurrentBehaviourControl.Character.characterControl.MoveToDirection(Vector2.zero);
     }
 
@@ -32,14 +30,19 @@ public class IdleState : CharacterBaseState
 
     public override void InitializeSubState()
     {
-
+        if (BehaviourControl.Character.IsPlayer)
+        {
+            SetSubState(StateFactory.InputState());
+        }
+        if (BehaviourControl.IsAttacking)
+        {
+            SetSubState(StateFactory.Attacking());
+        }
     }
 
     public override void UpdateState()
     {
         CheckSwitchStates();
-
-
     }
 
 }

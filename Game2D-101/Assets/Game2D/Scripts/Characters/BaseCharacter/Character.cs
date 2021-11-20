@@ -19,6 +19,8 @@ public abstract class Character : MonoBehaviour
     public UnityAction onAttack;
     public UnityAction<Vector2> onMove;
 
+    public bool IsPlayer { get { return this.tag == "Player"; } }
+
 
     //method
     public abstract string GetCharacterModelId();

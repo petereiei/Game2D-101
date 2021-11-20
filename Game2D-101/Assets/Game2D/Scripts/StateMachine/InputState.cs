@@ -10,31 +10,25 @@ public class InputState : IdleState
 
     public override void CheckSwitchStates()
     {
-        base.CheckSwitchStates();
+
     }
 
     public override void EnterState()
     {
-        base.EnterState();
 
-        Debug.Log("EnterState InputState...");
     }
 
     public override void ExitState()
     {
-        base.ExitState();
     }
 
     public override void InitializeSubState()
     {
-        base.InitializeSubState();
+
     }
 
     public override void UpdateState()
     {
-        base.UpdateState();
-
-
         CurrentBehaviourControl.Character.characterControl.MoveToDirection(GetRawInput().normalized);
     }
 

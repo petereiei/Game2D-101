@@ -15,8 +15,6 @@ public class CharacterControl : MonoBehaviour
     public virtual void Init(Character character)
     {
         this.character = character;
-
-        Debug.Log("Init Character Control");
     }
 
     public void MoveToDirection(Vector2 direction)
@@ -29,5 +27,15 @@ public class CharacterControl : MonoBehaviour
     public void Attack()
     {
         character.onAttack?.Invoke();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Space");
+            character.behaviourControl.CurrentState = character.behaviourControl.States.Attacking();
+            character.behaviourControl.CurrentState.EnterState();
+        }
     }
 }

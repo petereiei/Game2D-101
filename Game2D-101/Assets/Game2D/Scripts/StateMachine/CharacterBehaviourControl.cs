@@ -10,26 +10,20 @@ public class CharacterBehaviourControl : MonoBehaviour
     private CharacterStateFactory states;
 
     public bool isAttacking = false;
-
+    public bool IsAttacking { get { return isAttacking; } set { isAttacking = value; } }
     public CharacterBaseState CurrentState { get { return currentState; } set { currentState = value; } }
     public Character Character { get { return character; } }
+    public CharacterStateFactory States { get { return states; } set { states = value; } }
 
-    public void Init(Character character)
+    public virtual void Init(Character character)
     {
+        Debug.Log("Init CharacterBehaviourControl");
         this.character = character;
-
-        states = new CharacterStateFactory(this);
-        currentState = states.InputState();
-        currentState.EnterState();
     }
 
-    private void Update()
+    protected virtual void FixedUpdate()
     {
-        currentState.UpdateState();
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            isAttacking = true;
-        }
+        if (currentState != null)
+            currentState.UpdateState();
     }
 }
