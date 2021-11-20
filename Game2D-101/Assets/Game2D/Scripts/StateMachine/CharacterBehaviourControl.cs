@@ -9,6 +9,8 @@ public class CharacterBehaviourControl : MonoBehaviour
     private CharacterBaseState currentState;
     private CharacterStateFactory states;
 
+    public bool isAttacking = false;
+
     public CharacterBaseState CurrentState { get { return currentState; } set { currentState = value; } }
     public Character Character { get { return character; } }
 
@@ -17,12 +19,17 @@ public class CharacterBehaviourControl : MonoBehaviour
         this.character = character;
 
         states = new CharacterStateFactory(this);
-        currentState = states.Idle();
+        currentState = states.InputState();
         currentState.EnterState();
     }
 
     private void Update()
     {
         currentState.UpdateState();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            isAttacking = true;
+        }
     }
 }

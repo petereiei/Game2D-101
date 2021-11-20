@@ -11,6 +11,11 @@ public class CharacterStateFactory : MonoBehaviour
         this.behaviourControl = behaviourControl;
     }
 
+    public CharacterBaseState InputState()
+    {
+        return new InputState(behaviourControl, this);
+    }
+
     public CharacterBaseState Idle()
     {
         return new IdleState(behaviourControl, this);
@@ -19,5 +24,10 @@ public class CharacterStateFactory : MonoBehaviour
     public CharacterBaseState Move()
     {
         return new MoveState(behaviourControl, this);
+    }
+
+    public CharacterBaseState Attacking()
+    {
+        return new AttackingState(behaviourControl, this);
     }
 }
