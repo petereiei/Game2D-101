@@ -7,6 +7,7 @@ public class CharacterModel : MonoBehaviour
     private const string CHARACTER_MODEL = "Prefabs/Characters/Models/";
 
     protected Character character;
+    private SlotWeapon slotWeapon;
 
     private Animator animator;
     private GameObject model;
@@ -26,6 +27,7 @@ public class CharacterModel : MonoBehaviour
         model.transform.localScale = Vector3.one;
 
         this.animator = model.GetComponentInChildren<Animator>();
+        this.slotWeapon = model.GetComponentInChildren<SlotWeapon>();
     }
 
     public void OnMove(Vector2 direction)
