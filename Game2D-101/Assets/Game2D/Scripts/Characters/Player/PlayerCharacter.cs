@@ -6,8 +6,10 @@ public class PlayerCharacter : Character
 {
     public PlayerAttribute playerAttribute;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         playerAttribute = gameObject.AddComponent<PlayerAttribute>();
         attribute = playerAttribute;
         characterModel = gameObject.GetComponentInChildren<CharacterModel>();
@@ -19,6 +21,7 @@ public class PlayerCharacter : Character
         playerAttribute.Init(this);
         characterModel.Init(this);
         characterControl.Init(this);
+        behaviourControl.Init(this);
 
         onMove += characterModel.OnMove;
         onAttack += characterModel.OnAttack;
