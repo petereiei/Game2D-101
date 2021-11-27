@@ -7,7 +7,7 @@ public class CharacterModel : MonoBehaviour
     private const string CHARACTER_MODEL = "Prefabs/Characters/Models/";
 
     protected Character character;
-    private SlotWeapon slotWeapon;
+    public SlotWeapon slotWeapon;
 
     private Animator animator;
     private GameObject model;
@@ -28,6 +28,7 @@ public class CharacterModel : MonoBehaviour
 
         animator = model.GetComponentInChildren<Animator>();
         slotWeapon = model.GetComponentInChildren<SlotWeapon>();
+        slotWeapon.Init(character);
     }
 
     public void OnMove(Vector2 direction)

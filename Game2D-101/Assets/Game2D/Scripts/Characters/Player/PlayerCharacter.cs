@@ -22,6 +22,7 @@ public class PlayerCharacter : Character
         characterModel.Init(this);
         characterControl.Init(this);
         behaviourControl.Init(this);
+        attribute.Init();
 
         onMove += characterModel.OnMove;
         onAttack += characterModel.OnAttack;

@@ -13,6 +13,25 @@ public class SlotWeapon : MonoBehaviour
     }
 
     public Slot[] attachments;
+
+    private Weapon weapon;
+
+    public void Init(Character character)
+    {
+        weapon = gameObject.GetComponentInChildren<Weapon>();
+        weapon.Init(character);
+    }
+
+    // set open box collider hit box in animation attacking
+    private void OpenHitBox()
+    {
+        weapon.OpenHitBox();
+    }
+    // set close box collider hit box in animation attacking
+    private void CloseHitBox()
+    {
+        weapon.CloseHitBox();
+    }
 }
 
 public enum HandType
