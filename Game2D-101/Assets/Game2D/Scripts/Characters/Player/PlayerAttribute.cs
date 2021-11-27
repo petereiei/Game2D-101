@@ -8,7 +8,7 @@ public class PlayerAttribute : CharacterAttribute
 
     public override float BaseMaxHP => 100f;
 
-    public override float BasePAtk => 10f;
+    public override float BasePAtk => 50f;
 
     public void Init(Character character)
     {

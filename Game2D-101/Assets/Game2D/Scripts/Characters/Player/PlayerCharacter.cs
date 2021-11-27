@@ -18,6 +18,8 @@ public class PlayerCharacter : Character
 
     public void Init()
     {
+        IsDeath = false;
+
         playerAttribute.Init(this);
         characterModel.Init(this);
         characterControl.Init(this);
@@ -30,6 +32,6 @@ public class PlayerCharacter : Character
 
     public override string GetCharacterModelId()
     {
-        return "Unit_Knight_Jarek";
+        return "Player";
     }
 }

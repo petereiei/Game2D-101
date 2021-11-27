@@ -18,8 +18,12 @@ public abstract class Character : MonoBehaviour
     //event
     public UnityAction onAttack;
     public UnityAction<Vector2> onMove;
+    public UnityAction onDie;
+    public UnityAction<CharacterSkill> onCastFinish;
 
+    public bool IsDeath { get; set; }
     public bool IsPlayer { get { return this.tag == "Player"; } }
+    public bool IsMonster { get { return this.tag == "Monster"; } }
 
 
     //method

@@ -17,14 +17,18 @@ public class MonsterCharacter : Character
 
     public void Init()
     {
+        IsDeath = false;
+
         monsterAttribute.Init(this);
         characterModel.Init(this);
         attribute.Init();
+
+        onDie += characterModel.OnDie;
     }
 
     public override string GetCharacterModelId()
     {
-        return "Unit_Skeleton_Jabban";
+        return "Monster_0001";
     }
 
    

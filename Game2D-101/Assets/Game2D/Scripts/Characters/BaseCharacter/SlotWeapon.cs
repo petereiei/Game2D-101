@@ -19,7 +19,9 @@ public class SlotWeapon : MonoBehaviour
     public void Init(Character character)
     {
         weapon = gameObject.GetComponentInChildren<Weapon>();
-        weapon.Init(character);
+
+        if (weapon)
+            weapon.Init(character);
     }
 
     // set open box collider hit box in animation attacking

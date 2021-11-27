@@ -26,13 +26,14 @@ public abstract class CharacterAttribute : MonoBehaviour
     public void TakeDamage(float damage)
     {
         if (hp > 0f)
-        {
             hp -= damage;
-        }
 
         if (hp <= 0)
         {
             Debug.Log("Death");
+            character.IsDeath = true;
+            hp = 0;
+            character.onDie();
         }
     }
 }
