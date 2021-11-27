@@ -26,8 +26,8 @@ public class CharacterModel : MonoBehaviour
         model.transform.position = transform.position;
         model.transform.localScale = Vector3.one;
 
-        this.animator = model.GetComponentInChildren<Animator>();
-        this.slotWeapon = model.GetComponentInChildren<SlotWeapon>();
+        animator = model.GetComponentInChildren<Animator>();
+        slotWeapon = model.GetComponentInChildren<SlotWeapon>();
     }
 
     public void OnMove(Vector2 direction)
