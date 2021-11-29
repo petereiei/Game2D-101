@@ -11,4 +11,9 @@ public class GameManager : MonoSingleton<GameManager>
         Debug.Log(rawSkillData.skillDatas[0].id + " / " + rawSkillData.skillDatas[0].castTime);
         Debug.Log(rawSkillData.skillDatas[1].id + " / " + rawSkillData.skillDatas[1].castTime);
     }
+
+    public GameObject Instantiate(GameObject prefab)
+    {
+        return Instantiate(prefab);
+    }
 }

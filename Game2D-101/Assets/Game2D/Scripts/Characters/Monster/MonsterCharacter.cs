@@ -12,7 +12,7 @@ public class MonsterCharacter : Character
 
         monsterAttribute = gameObject.AddComponent<MonsterAttribute>();
         attribute = monsterAttribute;
-        characterModel = gameObject.GetComponentInChildren<CharacterModel>();
+        characterAnimator = gameObject.GetComponentInChildren<CharacterAnimator>();
     }
 
     public void Init()
@@ -20,10 +20,10 @@ public class MonsterCharacter : Character
         IsDeath = false;
 
         monsterAttribute.Init(this);
-        characterModel.Init(this);
+        characterAnimator.Init(this);
         attribute.Init();
 
-        onDie += characterModel.OnDie;
+        onDie += characterAnimator.OnDie;
     }
 
     public override string GetCharacterModelId()

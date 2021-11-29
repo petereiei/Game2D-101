@@ -11,7 +11,7 @@ public abstract class Character : MonoBehaviour
     public CharacterAttribute attribute;
 
     //module
-    public CharacterModel characterModel;
+    public CharacterAnimator characterAnimator;
     public CharacterControl characterControl;
 
 

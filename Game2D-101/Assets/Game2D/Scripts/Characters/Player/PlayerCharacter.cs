@@ -12,7 +12,7 @@ public class PlayerCharacter : Character
 
         playerAttribute = gameObject.AddComponent<PlayerAttribute>();
         attribute = playerAttribute;
-        characterModel = gameObject.GetComponentInChildren<CharacterModel>();
+        characterAnimator = gameObject.GetComponentInChildren<CharacterAnimator>();
         characterControl = gameObject.GetComponent<PlayerControl>();
     }
 
@@ -21,13 +21,13 @@ public class PlayerCharacter : Character
         IsDeath = false;
 
         playerAttribute.Init(this);
-        characterModel.Init(this);
+        characterAnimator.Init(this);
         characterControl.Init(this);
         behaviourControl.Init(this);
         attribute.Init();
 
-        onMove += characterModel.OnMove;
-        onAttack += characterModel.OnAttack;
+        onMove += characterAnimator.OnMove;
+        onAttack += characterAnimator.OnAttack;
     }
 
     public override string GetCharacterModelId()

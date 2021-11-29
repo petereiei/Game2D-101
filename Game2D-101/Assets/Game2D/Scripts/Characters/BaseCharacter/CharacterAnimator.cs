@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterModel : MonoBehaviour
+public class CharacterAnimator : MonoBehaviour
 {
     private const string CHARACTER_MODEL = "Prefabs/Characters/Models/";
 
@@ -54,6 +54,11 @@ public class CharacterModel : MonoBehaviour
             transform.localScale = new Vector3(Mathf.Sign(directionX), 1, 1);
     }
 
+    public void PlayerAnimation(CharacterSkill characterSkill)
+    {
+        animator.Play(characterSkill.skillData.animClip);
+    }
+
     private IEnumerator CastingSkill(CharacterSkill skill)
     {
         IsCasting = true;
@@ -69,5 +74,10 @@ public class CharacterModel : MonoBehaviour
     public void OnDie()
     {
         animator.SetTrigger("Die");
+    }
+
+    public string GetCharacterDirection()
+    {
+        return (transform.localScale.x == 1) ? "Left" : "Right";
     }
 }

@@ -6,4 +6,6 @@ using UnityEngine;
 public class RawSkillData : ScriptableObject
 {
     public List<SkillData> skillDatas;
+    public List<SkillEffectData> skillEffectDatas;
+    public List<RawSkillBulletData> skillBulletData;
 }
