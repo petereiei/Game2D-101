@@ -15,5 +15,14 @@ MonoBehaviour:
   skillDatas:
   - id: skill_0001
     castTime: 5
+    animClip: skill_1
   - id: skill_0002
     castTime: 10
+    animClip: skill_2
+  skillEffectDatas:
+  - skillId: skill_0001
+    duration: 5
+    value: 25
+  - skillId: skill_0002
+    duration: 10
+    value: 50
