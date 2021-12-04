@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterModel : MonoBehaviour
+public class CharacterAnimator : MonoBehaviour
 {
     private const string CHARACTER_MODEL = "Prefabs/Characters/Models/";
 
@@ -12,6 +12,8 @@ public class CharacterModel : MonoBehaviour
     private Animator animator;
     private GameObject model;
     private Vector2 tempDirection;
+
+    public bool IsCasting { get; private set; }
 
     public void Init(Character character)
     {
@@ -28,6 +30,7 @@ public class CharacterModel : MonoBehaviour
 
         animator = model.GetComponentInChildren<Animator>();
         slotWeapon = model.GetComponentInChildren<SlotWeapon>();
+        slotWeapon.Init(character);
     }
 
     public void OnMove(Vector2 direction)
@@ -49,5 +52,33 @@ public class CharacterModel : MonoBehaviour
     {
         if (directionX != 0)
             transform.localScale = new Vector3(Mathf.Sign(directionX), 1, 1);
+    }
+
+    public void PlayerAnimation(CharacterSkill characterSkill)
+    {
+        StartCoroutine(CastingSkill(characterSkill));
+    }
+
+    private IEnumerator CastingSkill(CharacterSkill skill)
+    {
+        IsCasting = true;
+
+        animator.Play(skill.skillData.animClip);
+        yield return new WaitForSeconds(5f);
+
+        IsCasting = false;
+        if (!character.IsDeath)
+            character.onCastFinish(skill);
+
+    }
+
+    public void OnDie()
+    {
+        animator.SetTrigger("Die");
+    }
+
+    public string GetCharacterDirection()
+    {
+        return (transform.localScale.x == 1) ? "Left" : "Right";
     }
 }
