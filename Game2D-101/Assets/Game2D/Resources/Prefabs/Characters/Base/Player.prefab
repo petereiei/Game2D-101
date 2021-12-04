@@ -87,7 +87,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behaviourControl: {fileID: 0}
   attribute: {fileID: 0}
-  characterModel: {fileID: 0}
+  characterAnimator: {fileID: 0}
   characterControl: {fileID: 0}
   playerAttribute: {fileID: 0}
 --- !u!114 &6022345779482346238
@@ -114,7 +114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92fccf11bfb38d047b4f584df4fcad43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  states: {fileID: 0}
   isAttacking: 0
 --- !u!1 &8341227230800581163
 GameObject:
@@ -125,7 +124,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8926738473783826364}
-  - component: {fileID: 7557214887867643803}
+  - component: {fileID: 3450097770417966808}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -147,7 +146,7 @@ Transform:
   m_Father: {fileID: 973346427199552494}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7557214887867643803
+--- !u!114 &3450097770417966808
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -156,6 +155,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8341227230800581163}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7426f39660f3ba9498e2a795fc3239f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 3325757bffe5c2e4f978f4322620e4ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

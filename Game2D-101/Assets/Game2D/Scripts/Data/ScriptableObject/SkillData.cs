@@ -9,6 +9,7 @@ public class SkillData
     public float castTime;
     public string animClip;
     public float areaSize;
+    public float damage;
 
 }
 

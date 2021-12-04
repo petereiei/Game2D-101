@@ -56,13 +56,14 @@ public class CharacterAnimator : MonoBehaviour
 
     public void PlayerAnimation(CharacterSkill characterSkill)
     {
-        animator.Play(characterSkill.skillData.animClip);
+        StartCoroutine(CastingSkill(characterSkill));
     }
 
     private IEnumerator CastingSkill(CharacterSkill skill)
     {
         IsCasting = true;
 
+        animator.Play(skill.skillData.animClip);
         yield return new WaitForSeconds(5f);
 
         IsCasting = false;

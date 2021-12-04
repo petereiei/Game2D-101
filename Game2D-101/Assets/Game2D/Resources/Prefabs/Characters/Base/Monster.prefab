@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3303758052303928969}
-  - component: {fileID: 1366991957309818524}
+  - component: {fileID: 1815454174188309841}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 3088093902025006487}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1366991957309818524
+--- !u!114 &1815454174188309841
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,7 +40,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 77542304016824017}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7426f39660f3ba9498e2a795fc3239f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 3325757bffe5c2e4f978f4322620e4ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3037784426299109614
@@ -111,6 +111,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behaviourControl: {fileID: 0}
   attribute: {fileID: 0}
-  characterModel: {fileID: 0}
+  characterAnimator: {fileID: 0}
   characterControl: {fileID: 0}
   monsterAttribute: {fileID: 0}

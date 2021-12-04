@@ -18,6 +18,7 @@ public class CharacterSkill
     public void UseSkill()
     {
         SplitEffectData(GetEffectData(), out List<SkillEffectData> bulletEffects);
+        ShootBullets(bulletEffects);
     }
 
     private List<SkillEffectData> GetEffectData()

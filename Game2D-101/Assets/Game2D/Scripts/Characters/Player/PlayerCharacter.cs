@@ -28,6 +28,7 @@ public class PlayerCharacter : Character
 
         onMove += characterAnimator.OnMove;
         onAttack += characterAnimator.OnAttack;
+        onCastFinish += (skill) => skill.UseSkill();
     }
 
     public override string GetCharacterModelId()

@@ -16,13 +16,30 @@ MonoBehaviour:
   - id: skill_0001
     castTime: 5
     animClip: skill_1
+    areaSize: 2
+    damage: 15
   - id: skill_0002
     castTime: 10
     animClip: skill_2
+    areaSize: 1
+    damage: 25
   skillEffectDatas:
   - skillId: skill_0001
+    skillName: TakeDamage
     duration: 5
     value: 25
   - skillId: skill_0002
+    skillName: TakeDamage
     duration: 10
     value: 50
+  skillBulletData:
+  - skillId: skill_0001
+    delaySpawn: 1
+    lifeTime: 2
+    moveSpeed: 5
+    shape: 0
+  - skillId: skill_0002
+    delaySpawn: 1
+    lifeTime: 2
+    moveSpeed: 5
+    shape: 1

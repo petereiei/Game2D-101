@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-
     protected RawSkillBulletData rawSkillBulletData;
     protected List<SkillEffectData> effectData;
     protected Character characterUse;
@@ -12,7 +11,7 @@ public class Bullet : MonoBehaviour
     protected Vector3 direction;
 
     public new Collider2D collider;
-    public static bool activeDebugCollider = false;
+    public static bool activeDebugCollider = true;
     public SpriteRenderer debugCollider;
     private float bulletSpeed = 10f;
    
@@ -73,13 +72,37 @@ public class Bullet : MonoBehaviour
     {
         string ownerDirection = GetOwnerDirection();
         if (ownerDirection == "Left")
-            return -transform.right;
-        else
             return transform.right;
+        else
+            return -transform.right;
     }
 
     private string GetOwnerDirection()
     {
         return characterSkill.characterUse.characterAnimator.GetCharacterDirection();
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Character target = other.GetComponentInParent<Character>();
+        if (target != null && target != characterSkill.characterUse)
+        {
+            ApplyEffect(target);
+        }
+    }
+
+    public void ApplyEffect(Character target)
+    {
+        foreach (SkillEffectData rawEffectData in effectData)
+        {
+            BaseEffect cloneEffect = SkillEffectFactory.GenerateEffect<BaseEffect>(rawEffectData, target);
+            cloneEffect.InitializeEffectData(characterSkill, this, rawEffectData);
+            cloneEffect.Apply(target);
+        }
+    }
+
+    public virtual void Update()
+    {
+        transform.position += direction * Time.deltaTime * bulletSpeed;
     }
 }

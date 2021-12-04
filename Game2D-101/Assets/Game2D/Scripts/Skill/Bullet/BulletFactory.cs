@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class BulletFactory
 {
-    private const string BULLET_PATH = "Prefabs/Skill/Bullet/";
+    private const string BULLET_PATH = "Prefabs/Skills/Bullets/";
     private const string SHAPE_BULLET = "Bullet";
     private const string SHAPE_BURST = "BurstInfront";
 
@@ -28,18 +28,28 @@ public static class BulletFactory
             Debug.Log($"{casterPivot.gameObject.transform.name}");
             var bullet = GetBulletObject(bulletsData[i], casterPivot.transform);
 
+            bullet.Init(characterSkill, bulletsData[i], bulletEffectsData);
+
+            //SpawnParticle(characterSkill, bulletsData[i], bullet);
         }
     }
 
-    private static GameObject GetBulletObject(RawSkillBulletData bulletData, Transform positionTransform)
+    private static Bullet GetBulletObject(RawSkillBulletData bulletData, Transform positionTransform)
     {
         Debug.Log($"{positionTransform.name}");
-        var prefab = Resources.Load<GameObject>(GetBulletPath(bulletData));
-        var bulletObject = GameManager.instance.Instantiate(prefab);
+        var path = GetBulletPath(bulletData);
+        var bulletObject = GameManager.instance.InstantiateBullet(path);
         bulletObject.transform.position = positionTransform.position;
         bulletObject.transform.rotation = positionTransform.rotation;
         bulletObject.transform.SetParent(GameManager.instance.transform);
         return bulletObject;
+    }
+
+    private static void SpawnParticle(CharacterSkill characterSkill, RawSkillBulletData bulletsData, Bullet bullet)
+    {
+        var particle = GameManager.instance.GenerateParticle("", bulletsData, bullet.transform);
+        if (particle)
+            particle.Init(characterSkill, bullet, bulletsData);
     }
 
     private static string GetBulletPath(RawSkillBulletData bulletData)
@@ -59,6 +69,6 @@ public static class BulletFactory
 
     public static void ReturnBullet(Bullet bullet, float delay)
     {
-        
+        GameManager.instance.DestroyObject(bullet.gameObject, delay);
     }
 }

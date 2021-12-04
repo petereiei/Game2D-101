@@ -25,6 +25,8 @@ public abstract class CharacterAttribute : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        Debug.Log($"TakeDamage: {damage}");
+
         if (hp > 0f)
             hp -= damage;
 
@@ -35,5 +37,13 @@ public abstract class CharacterAttribute : MonoBehaviour
             hp = 0;
             character.onDie();
         }
+
+        Debug.Log($"hp: {hp}");
+    }
+
+    public void Heal(float healValue)
+    {
+        Debug.Log($"healValue: {healValue}");
+        hp = Mathf.Min(hp + healValue, BaseMaxHP);
     }
 }
