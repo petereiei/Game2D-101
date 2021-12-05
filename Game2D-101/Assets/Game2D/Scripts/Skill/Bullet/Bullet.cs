@@ -35,6 +35,11 @@ public class Bullet : MonoBehaviour
         BulletFactory.ReturnBullet(this, rawSkillBulletData.lifeTime);
     }
 
+    public RawSkillBulletData GetSkillBulletData()
+    {
+        return rawSkillBulletData;
+    }
+
     private void LookAtTargetDirection(Vector3 direction)
     {
         if (direction == Vector3.zero)

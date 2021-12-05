@@ -6,35 +6,14 @@ public class GameManager : MonoSingleton<GameManager>
 {
     public RawSkillData rawSkillData;
 
-    public Bullet InstantiateBullet(string path)
+    public void ReturnObject(string path, GameObject gameObject, float delay = 0f)
     {
-        return Instantiate(Resources.Load<Bullet>(path));
+        StartCoroutine(PoolingReturnObject(path, gameObject, delay));
     }
 
-    public T InstantiateObject<T>(T GameObject) where T : Component
-    {
-        return Instantiate(GameObject.gameObject).GetComponent<T>(); ;
-    }
-
-    public BulletParticle GenerateParticle(string path, RawSkillBulletData bulletData, Transform bulletTransform)
-    {
-        Debug.Log(path + "/" + bulletData.skillId);
-        var particle = Instantiate(Resources.Load<GameObject>(path + "/" + bulletData.skillId));
-        particle.transform.position = bulletTransform.position;
-        particle.transform.rotation = bulletTransform.rotation;
-        particle.transform.localScale = Vector3.one;
-
-        return particle.GetComponent<BulletParticle>();
-    }
-
-    public void DestroyObject(GameObject gameObject, float delay = 0f)
-    {
-        StartCoroutine(DelayDestroy(gameObject, delay));
-    }
-
-    private IEnumerator DelayDestroy(GameObject gameObject, float delay)
+    private IEnumerator PoolingReturnObject(string path, GameObject gameObject, float delay)
     {
         yield return new WaitForSeconds(delay);
-        Destroy(gameObject);
+        ObjectPooling.instance.ReturnObject(path, gameObject);
     }
 }

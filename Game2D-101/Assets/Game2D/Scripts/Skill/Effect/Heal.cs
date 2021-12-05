@@ -12,6 +12,6 @@ public class Heal : BaseEffect
 
     public override void Remove()
     {
-        Destroy(gameObject);
+        SkillEffectFactory.ReturnObject(this);
     }
 }

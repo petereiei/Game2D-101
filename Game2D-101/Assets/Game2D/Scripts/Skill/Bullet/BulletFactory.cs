@@ -29,8 +29,6 @@ public static class BulletFactory
             var bullet = GetBulletObject(bulletsData[i], casterPivot.transform);
 
             bullet.Init(characterSkill, bulletsData[i], bulletEffectsData);
-
-            //SpawnParticle(characterSkill, bulletsData[i], bullet);
         }
     }
 
@@ -38,18 +36,11 @@ public static class BulletFactory
     {
         Debug.Log($"{positionTransform.name}");
         var path = GetBulletPath(bulletData);
-        var bulletObject = GameManager.instance.InstantiateBullet(path);
+        var bulletObject = ObjectPooling.instance.GetObject($"Bullet_{bulletData.skillId}", Resources.Load<Bullet>(path));
         bulletObject.transform.position = positionTransform.position;
         bulletObject.transform.rotation = positionTransform.rotation;
         bulletObject.transform.SetParent(GameManager.instance.transform);
         return bulletObject;
-    }
-
-    private static void SpawnParticle(CharacterSkill characterSkill, RawSkillBulletData bulletsData, Bullet bullet)
-    {
-        var particle = GameManager.instance.GenerateParticle("", bulletsData, bullet.transform);
-        if (particle)
-            particle.Init(characterSkill, bullet, bulletsData);
     }
 
     private static string GetBulletPath(RawSkillBulletData bulletData)
@@ -69,6 +60,6 @@ public static class BulletFactory
 
     public static void ReturnBullet(Bullet bullet, float delay)
     {
-        GameManager.instance.DestroyObject(bullet.gameObject, delay);
+        GameManager.instance.ReturnObject($"Bullet_{bullet.GetSkillBulletData().skillId}", bullet.gameObject, delay);
     }
 }
