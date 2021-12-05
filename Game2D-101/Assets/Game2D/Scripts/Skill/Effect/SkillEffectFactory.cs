@@ -15,7 +15,7 @@ public static class SkillEffectFactory
             return null;
         }
         var effectParent = character.characterAnimator.transform;
-        var spawnedEffect = GameManager.instance.InstantiateObject(effectPrefab); 
+        var spawnedEffect = ObjectPooling.instance.GetObject(effectData.skillName, effectPrefab);
         spawnedEffect.transform.position = effectParent.position;
         spawnedEffect.transform.rotation = effectParent.rotation;
         spawnedEffect.transform.SetParent(effectParent);
@@ -24,7 +24,13 @@ public static class SkillEffectFactory
     }
     public static T GetEffectPrefab<T>(string effectName) where T : BaseEffect
     {
+        Debug.Log(EFFECT_PATH + effectName);
         var effectPrefab = Resources.Load<T>(EFFECT_PATH + effectName);
         return effectPrefab;
+    }
+
+    public static void ReturnObject(BaseEffect effect)
+    {
+        ObjectPooling.instance.ReturnObject(effect.effectData.skillName, effect.gameObject);
     }
 }
