@@ -65,4 +65,15 @@ public class ObjectPooling : MonoSingleton<ObjectPooling>
 
         objectPool[poolName].Enqueue(obj);
     }
+
+    public void ReturnObject(string path, GameObject gameObject, float delay = 0f)
+    {
+        StartCoroutine(PoolingReturnObject(path, gameObject, delay));
+    }
+
+    private IEnumerator PoolingReturnObject(string path, GameObject gameObject, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        ReturnObject(path, gameObject);
+    }
 }

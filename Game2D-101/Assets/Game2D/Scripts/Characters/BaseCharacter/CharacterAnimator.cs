@@ -24,7 +24,8 @@ public class CharacterAnimator : MonoBehaviour
 
     private void GetCharacterModel()
     {
-        model = Instantiate(Resources.Load<GameObject>(CHARACTER_MODEL + character.GetCharacterModelId()), transform);
+        model = ObjectPooling.instance.GetObject($"Monster_{character.GetCharacterModelId()}", Resources.Load<GameObject>(CHARACTER_MODEL + character.GetCharacterModelId())); //Instantiate(Resources.Load<GameObject>(CHARACTER_MODEL + character.GetCharacterModelId()), transform);
+        model.transform.SetParent(transform);
         model.transform.position = transform.position;
         model.transform.localScale = Vector3.one;
 
@@ -73,9 +74,16 @@ public class CharacterAnimator : MonoBehaviour
 
     }
 
-    public void OnDie()
+    public void OnDie(Character character)
     {
         animator.SetTrigger("Die");
+
+        ReturnToMonster();
+    }
+
+    public void ReturnToMonster()
+    {
+        ObjectPooling.instance.ReturnObject($"Monster_{character.GetCharacterModelId()}", model, 2f);
     }
 
     public string GetCharacterDirection()

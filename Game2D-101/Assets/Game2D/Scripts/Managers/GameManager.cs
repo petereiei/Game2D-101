@@ -12,7 +12,22 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Start()
     {
-        PlayerCharacter playerCharacter = Instantiate(Resources.Load<PlayerCharacter>("Prefabs/Characters/Base/Player"));
+        GeneratePlayer();
+
+        GenerateMonster();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            GenerateMonster();
+        }
+    }
+
+    private void GeneratePlayer()
+    {
+        PlayerCharacter playerCharacter = ObjectPooling.instance.GetObject("PlayerCharacter", Resources.Load<PlayerCharacter>("Prefabs/Characters/Base/Player"));
         playerCharacter.transform.SetParent(player);
         playerCharacter.transform.position = player.position;
         playerCharacter.transform.localScale = Vector3.one;
@@ -20,22 +35,15 @@ public class GameManager : MonoSingleton<GameManager>
         playerCharacter.Init();
         characterHPBar.playerHp.SetData(playerCharacter);
 
-        MonsterCharacter monsterCharacter = Instantiate(Resources.Load<MonsterCharacter>("Prefabs/Characters/Base/Monster"));
+    }
+
+    private void GenerateMonster()
+    {
+        MonsterCharacter monsterCharacter = ObjectPooling.instance.GetObject("MonsterCharacter", Resources.Load<MonsterCharacter>("Prefabs/Characters/Base/Monster"));
         monsterCharacter.transform.SetParent(monster);
         monsterCharacter.transform.position = monster.position;
         monsterCharacter.transform.localScale = Vector3.one;
 
         monsterCharacter.Init();
-    }
-
-    public void ReturnObject(string path, GameObject gameObject, float delay = 0f)
-    {
-        StartCoroutine(PoolingReturnObject(path, gameObject, delay));
-    }
-
-    private IEnumerator PoolingReturnObject(string path, GameObject gameObject, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        ObjectPooling.instance.ReturnObject(path, gameObject);
     }
 }
