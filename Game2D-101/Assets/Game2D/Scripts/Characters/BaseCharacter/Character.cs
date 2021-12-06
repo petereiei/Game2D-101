@@ -19,7 +19,7 @@ public abstract class Character : MonoBehaviour
     //event
     public UnityAction onAttack;
     public UnityAction<Vector2> onMove;
-    public UnityAction onDie;
+    public UnityAction<Character> onDie;
     public UnityAction<CharacterSkill> onCastFinish;
     public UnityAction onAttributeChange;
 

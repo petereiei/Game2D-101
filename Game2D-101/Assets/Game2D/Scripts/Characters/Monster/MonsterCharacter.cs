@@ -6,6 +6,8 @@ public class MonsterCharacter : Character
 {
     public MonsterAttribute monsterAttribute;
 
+    private CharacterMonsterHP monsterHP;
+
     protected override void Awake()
     {
         base.Awake();
@@ -23,20 +25,27 @@ public class MonsterCharacter : Character
         characterAnimator.Init(this);
         attribute.Init();
 
-        GetHPBar();
+        GenerateHPBar();
 
         onDie += characterAnimator.OnDie;
+        onDie += OnDie;
     }
 
-    private void GetHPBar()
+    private void GenerateHPBar()
     {
-        CharacterMonsterHP monsterHP = ObjectPooling.instance.GetObject("HPBarMonster", Resources.Load<CharacterMonsterHP>("Prefabs/UI/HP/HP_Monster"));
+        monsterHP = ObjectPooling.instance.GetObject("HPBarMonster", Resources.Load<CharacterMonsterHP>("Prefabs/UI/HP/HP_Monster"));
         monsterHP.transform.SetParent(GameManager.instance.characterHPBar.parentMonsterHp);
         monsterHP.transform.position = characterPoint.hpPoint.position;
         monsterHP.transform.localScale = Vector3.one;
 
         monsterHP.SetData(this);
 
+    }
+
+    private void OnDie(Character character)
+    {
+        ObjectPooling.instance.ReturnObject("MonsterCharacter", gameObject, 2.5f);
+        ObjectPooling.instance.ReturnObject("HPBarMonster", monsterHP.gameObject);
     }
 
     public override string GetCharacterModelId()

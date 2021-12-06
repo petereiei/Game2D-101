@@ -35,7 +35,7 @@ public abstract class CharacterAttribute : MonoBehaviour
             Debug.Log("Death");
             character.IsDeath = true;
             hp = 0;
-            character.onDie();
+            character.onDie(character);
         }
 
         Debug.Log($"hp: {hp}");
