@@ -23,7 +23,20 @@ public class MonsterCharacter : Character
         characterAnimator.Init(this);
         attribute.Init();
 
+        GetHPBar();
+
         onDie += characterAnimator.OnDie;
+    }
+
+    private void GetHPBar()
+    {
+        CharacterMonsterHP monsterHP = ObjectPooling.instance.GetObject("HPBarMonster", Resources.Load<CharacterMonsterHP>("Prefabs/UI/HP/HP_Monster"));
+        monsterHP.transform.SetParent(GameManager.instance.characterHPBar.parentMonsterHp);
+        monsterHP.transform.position = characterPoint.hpPoint.position;
+        monsterHP.transform.localScale = Vector3.one;
+
+        monsterHP.SetData(this);
+
     }
 
     public override string GetCharacterModelId()
