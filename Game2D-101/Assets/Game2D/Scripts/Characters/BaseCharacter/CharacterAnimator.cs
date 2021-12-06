@@ -30,6 +30,7 @@ public class CharacterAnimator : MonoBehaviour
 
         animator = model.GetComponentInChildren<Animator>();
         slotWeapon = model.GetComponentInChildren<SlotWeapon>();
+        character.characterPoint = model.GetComponentInChildren<CharacterPoint>();
         slotWeapon.Init(character);
     }
 

@@ -13,6 +13,7 @@ public abstract class Character : MonoBehaviour
     //module
     public CharacterAnimator characterAnimator;
     public CharacterControl characterControl;
+    public CharacterPoint characterPoint;
 
 
     //event
@@ -20,6 +21,7 @@ public abstract class Character : MonoBehaviour
     public UnityAction<Vector2> onMove;
     public UnityAction onDie;
     public UnityAction<CharacterSkill> onCastFinish;
+    public UnityAction onAttributeChange;
 
     public bool IsDeath { get; set; }
     public bool IsPlayer { get { return this.tag == "Player"; } }

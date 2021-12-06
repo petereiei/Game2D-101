@@ -39,6 +39,8 @@ public abstract class CharacterAttribute : MonoBehaviour
         }
 
         Debug.Log($"hp: {hp}");
+
+        character.onAttributeChange.Invoke();
     }
 
     public void Heal(float healValue)
