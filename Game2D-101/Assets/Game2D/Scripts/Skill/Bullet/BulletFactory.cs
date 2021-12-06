@@ -60,6 +60,6 @@ public static class BulletFactory
 
     public static void ReturnBullet(Bullet bullet, float delay)
     {
-        GameManager.instance.ReturnObject($"Bullet_{bullet.GetSkillBulletData().skillId}", bullet.gameObject, delay);
+        ObjectPooling.instance.ReturnObject($"Bullet_{bullet.GetSkillBulletData().skillId}", bullet.gameObject, delay);
     }
 }
