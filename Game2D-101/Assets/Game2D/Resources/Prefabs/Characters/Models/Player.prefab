@@ -478,6 +478,14 @@ PrefabInstance:
       propertyPath: m_Bounds.m_Extent.y
       value: 0.8498118
       objectReference: {fileID: 0}
+    - target: {fileID: 8655611445177833445, guid: fccd1276d1e03604ba156745f06411e6, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8655611445177833445, guid: fccd1276d1e03604ba156745f06411e6, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -537457747
+      objectReference: {fileID: 0}
     - target: {fileID: 9095490763441698227, guid: fccd1276d1e03604ba156745f06411e6, type: 3}
       propertyPath: m_Bounds.m_Center.x
       value: -0.28531736

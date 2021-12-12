@@ -15,6 +15,7 @@ public class MonsterCharacter : Character
         monsterAttribute = gameObject.AddComponent<MonsterAttribute>();
         attribute = monsterAttribute;
         characterAnimator = gameObject.GetComponentInChildren<CharacterAnimator>();
+        characterControl = gameObject.GetComponent<CharacterControl>();
     }
 
     public void Init()
@@ -23,12 +24,25 @@ public class MonsterCharacter : Character
 
         monsterAttribute.Init(this);
         characterAnimator.Init(this);
+        characterControl.Init(this);
+        behaviourControl.Init(this);
         attribute.Init();
+       
 
         GenerateHPBar();
 
+        onMove += characterAnimator.OnMove;
         onDie += characterAnimator.OnDie;
         onDie += OnDie;
+
+        if (IsMonster)
+        {
+            Debug.Log("IsMonster");
+        }
+        else
+        {
+            Debug.Log("not IsMonster");
+        }
     }
 
     private void GenerateHPBar()

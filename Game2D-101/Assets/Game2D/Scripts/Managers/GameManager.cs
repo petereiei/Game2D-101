@@ -10,6 +10,8 @@ public class GameManager : MonoSingleton<GameManager>
     public Transform player;
     public Transform monster;
 
+    public PlayerCharacter playerCharacter;
+
     private void Start()
     {
         GeneratePlayer();
@@ -27,7 +29,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void GeneratePlayer()
     {
-        PlayerCharacter playerCharacter = ObjectPooling.instance.GetObject("PlayerCharacter", Resources.Load<PlayerCharacter>("Prefabs/Characters/Base/Player"));
+        playerCharacter = ObjectPooling.instance.GetObject("PlayerCharacter", Resources.Load<PlayerCharacter>("Prefabs/Characters/Base/Player"));
         playerCharacter.transform.SetParent(player);
         playerCharacter.transform.position = player.position;
         playerCharacter.transform.localScale = Vector3.one;

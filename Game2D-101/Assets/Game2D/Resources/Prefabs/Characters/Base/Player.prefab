@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7609283049383245892}
   - component: {fileID: 6022345779482346238}
   - component: {fileID: 6638909087937555150}
+  - component: {fileID: -4988792735612502378}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -67,7 +68,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -89,6 +90,7 @@ MonoBehaviour:
   attribute: {fileID: 0}
   characterAnimator: {fileID: 0}
   characterControl: {fileID: 0}
+  characterPoint: {fileID: 0}
   playerAttribute: {fileID: 0}
 --- !u!114 &6022345779482346238
 MonoBehaviour:
@@ -102,6 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 603bdecce410c0d41b7eed6121d6a03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentWaypoint: 0
 --- !u!114 &6638909087937555150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,6 +118,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAttacking: 0
+--- !u!195 &-4988792735612502378
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2356674831830741595}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.54
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 0
+  m_AutoRepath: 1
+  m_Height: 0.00001
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 0
 --- !u!1 &8341227230800581163
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class MoveState : CharacterBaseState
 {
-    public MoveState(CharacterBehaviourControl characterBehaviourControl, CharacterStateFactory characterStateFactory): base (characterBehaviourControl, characterStateFactory) { }
+
+    private const float timeDuration = 5f;
+    private float currentTime = 0;
+
+    public MoveState(CharacterBehaviourControl characterBehaviourControl, CharacterStateFactory characterStateFactory) : base(characterBehaviourControl, characterStateFactory)
+    {
+
+    }
 
     public override void CheckSwitchStates()
     {
@@ -13,21 +20,40 @@ public class MoveState : CharacterBaseState
 
     public override void EnterState()
     {
-        Debug.Log("EnterState MoveState...");
+        Debug.Log("MoveState EnterState");
+        currentTime = 0;
+        CurrentBehaviourControl.Character.characterControl.currentWaypoint = 0;
     }
 
     public override void ExitState()
     {
-        throw new System.NotImplementedException();
+
     }
 
     public override void InitializeSubState()
     {
-        throw new System.NotImplementedException();
+
     }
 
     public override void UpdateState()
     {
-        CheckSwitchStates();
+        currentTime += Time.deltaTime;
+
+        if (currentTime > timeDuration)
+        {
+            CurrentBehaviourControl.Character.characterControl.MoveToTarget(GameManager.instance.playerCharacter.transform.position);
+            CurrentBehaviourControl.Character.characterControl.MoveToNextWaypoint();
+
+            if (BehaviourControl.Character.characterControl.ReachTheLastTarget())
+            {
+                SwitchState(StateFactory.Idle());
+            }
+        }
+
+       
+
+
+
+        //CheckSwitchStates();
     }
 }

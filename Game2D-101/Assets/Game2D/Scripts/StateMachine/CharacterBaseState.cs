@@ -53,9 +53,11 @@ public abstract class CharacterBaseState
 
         if (isRootState)
         {
+            Debug.Log($"SwitchState: {newBaseState.ToString()}");
             behaviourControl.CurrentState = newBaseState;
         }else if (currentSuperState != null)
         {
+            Debug.Log("currentSuperState != null");
             currentSuperState.SetSubState(newBaseState);
         }
     }
@@ -65,6 +67,7 @@ public abstract class CharacterBaseState
     }
     protected void SetSubState(CharacterBaseState newSubState)
     {
+        Debug.Log($"{newSubState.ToString()}");
         currentSubState = newSubState;
         newSubState.SetSubState(this);
     }

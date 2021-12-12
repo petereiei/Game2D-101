@@ -17,7 +17,6 @@ public class CharacterBehaviourControl : MonoBehaviour
 
     public virtual void Init(Character character)
     {
-        Debug.Log("Init CharacterBehaviourControl");
         this.character = character;
     }
 

@@ -74,6 +74,6 @@ public class ObjectPooling : MonoSingleton<ObjectPooling>
     private IEnumerator PoolingReturnObject(string path, GameObject gameObject, float delay)
     {
         yield return new WaitForSeconds(delay);
-        ReturnObject(path, gameObject);
+        ObjectPooling.instance.ReturnObject(path, gameObject);
     }
 }

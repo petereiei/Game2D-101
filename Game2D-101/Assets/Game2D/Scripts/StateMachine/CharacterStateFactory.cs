@@ -18,11 +18,13 @@ public class CharacterStateFactory : MonoBehaviour
 
     public CharacterBaseState Idle()
     {
+        Debug.Log("CharacterBaseState Idle");
         return new IdleState(behaviourControl, this);
     }
 
     public CharacterBaseState Move()
     {
+        Debug.Log("CharacterBaseState Move");
         return new MoveState(behaviourControl, this);
     }
 
